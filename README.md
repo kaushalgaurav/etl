@@ -17,7 +17,6 @@ URL / Upload -> SOURCE DETECTION -> RAW -> CLEAN -> MASTER (per connector)
 ## Run
 
 ```bash
-cd etl_platform
 pip install -r requirements.txt
 cp .env.example .env          # then set PLATFORM_DATABASE_URL
 alembic upgrade head          # migrations are a deploy step, not a startup side effect
