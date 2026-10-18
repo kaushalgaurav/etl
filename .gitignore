@@ -1,0 +1,29 @@
+# Secrets — PLATFORM_DATABASE_URL carries a password, ANTHROPIC_API_KEY a key.
+# Never commit these. .env.example is the template that may be shared.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Ingested and generated data. Source files are re-downloaded on the next
+# fetch, exports are regenerated, and the warehouse is PostgreSQL in any real
+# deployment — none of it belongs in the repository.
+platform/backend/data/
+*.db
+*.sqlite3
+
+# Database dumps
+*.sql
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
