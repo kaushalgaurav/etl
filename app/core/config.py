@@ -26,9 +26,11 @@ class Settings(BaseSettings):
     # ANTHROPIC_API_KEY is the conventional name used across the ecosystem.
     anthropic_api_key: str | None = Field(default=None, validation_alias="ANTHROPIC_API_KEY")
     claude_model: str = Field(default="claude-opus-5-5", validation_alias="CLAUDE_MODEL")
-    # Set PLATFORM_DATABASE_URL (env var or .env) to use PostgreSQL, e.g.
+    # Required: PLATFORM_DATABASE_URL (env var or .env), e.g.
     # postgresql+psycopg2://user:password@host:5432/dbname
-    database_url: str = f"sqlite:///{DB_PATH.as_posix()}"
+    # No default on purpose — a silent fallback to an empty local database
+    # looks exactly like lost data.
+    database_url: str = ""
     max_upload_mb: int = 50
     request_timeout_seconds: int = 30
     max_profile_sample_rows: int = 20
@@ -50,3 +52,10 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+if not settings.database_url:
+    raise RuntimeError(
+        f"PLATFORM_DATABASE_URL is not set. Add it to {BACKEND_DIR / '.env'} "
+        "(see .env.example) or the environment, e.g. "
+        "postgresql+psycopg2://user:password@localhost:5432/platform"
+    )

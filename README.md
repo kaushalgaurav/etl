@@ -23,7 +23,8 @@ alembic upgrade head          # migrations are a deploy step, not a startup side
 uvicorn app.main:app --reload
 ```
 
-Swagger is at `/docs`. Without `PLATFORM_DATABASE_URL` it falls back to SQLite.
+Swagger is at `/docs`. `PLATFORM_DATABASE_URL` is required — without it the app
+refuses to start rather than silently opening an empty local database.
 
 ## The pipeline
 
