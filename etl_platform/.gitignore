@@ -13,7 +13,7 @@ venv/
 # Ingested and generated data. Source files are re-downloaded on the next
 # fetch, exports are regenerated, and the warehouse is PostgreSQL in any real
 # deployment — none of it belongs in the repository.
-platform/backend/data/
+data/
 *.db
 *.sqlite3
 

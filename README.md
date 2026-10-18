@@ -8,7 +8,7 @@ Everything lives in `platform/` — a FastAPI backend over PostgreSQL.
 ## Run
 
 ```bash
-cd platform/backend
+cd etl_platform
 pip install -r requirements.txt
 cp .env.example .env          # then set PLATFORM_DATABASE_URL
 alembic upgrade head          # migrations are a deploy step, not a startup side effect
